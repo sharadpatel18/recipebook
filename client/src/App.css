@@ -1,0 +1,196 @@
+.main{
+    width: 98vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 80vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-main{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.home-searchbar{
+    width: 60vw;
+    height: 20vh;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(0, 102, 255);
+}
+
+.home-searchbar input{
+    width: 250px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.home-searchbar select{
+    background-color: antiquewhite;
+    padding: 5px;
+}
+
+.home-searchbar button{
+    width: 100px;
+    height: 40px;
+    border: 1px solid rgb(18, 0, 121);
+    border-radius: 10px;
+    background-color: white;
+    color: rgb(0, 102, 255);
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.admin-main{
+    background-color: rgb(0, 102, 255);
+}
+
+.admin-navbar{
+    display: flex;
+    height: 50px;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-navbar div button{
+    margin: 0px 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+.add-main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-container{
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid rgba(134, 134, 134, 0.555);
+    border-radius: 30px;
+    margin: 20px;
+}
+
+.add-container h1{
+    margin: 20px;
+}
+
+.add-div-1{
+    display: flex;
+    justify-content: space-evenly;
+    width: 40vw;
+    margin: 10px;
+}
+
+.add-div-2{
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    width: 40vw;
+}
+
+.add-div-3{
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+.add-div-4{
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.add-div-5{
+    margin: 10px;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.add-div-6{
+    margin: 10px;
+    width: 40vw;
+    display: flex;
+}
+
+.ingredient-main{
+    display: flex;
+    width: 30vw;
+}
+
+.ingredient-main div{
+    margin: 10px;
+}
+
+.name{
+    width: 200px;
+}
+
+.quantity{
+    width: 50px;
+}
+
+.price{
+    width: 50px;
+}
+
+.ingredient-main button{
+    width: 30px;
+    height: 30px;
+}
+
+.ingre-btn{
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ingre-btn button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
