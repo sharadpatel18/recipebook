@@ -1,0 +1,3 @@
+const AddRecipe = (req,res) => {
+    
+}
