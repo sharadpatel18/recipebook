@@ -1,14 +1,12 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './components/Home';
+import Home from './components/customer/Home';
 import Navbar from './components/Navbar';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import AdminUser from './components/admin-User';
-import Addrecipe from './components/Addrecipe';
-import RecipeList from './components/RecipeList';
-import AddtoCard from './components/AddtoCard';
-import BuyNow from './components/BuyNow';
+import Signup from './components/Auth/Signup';
+import Login from './components/Auth/Login';
+import AdminUser from './components/admin/admin-User';
+import Addrecipe from './components/admin/Addrecipe';
+
 function App() {
 
   return (
@@ -21,9 +19,6 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/admin' element={<AdminUser />} />
             <Route path='/admin/addrecipe' element={<Addrecipe />} />
-            <Route path='/admin/recipeList' element={<RecipeList />} />
-            <Route path='/addtocart' element={<AddtoCard />} />
-            <Route path='/buynow' element={<BuyNow/>} />
           </Route>
         </Routes>
       </BrowserRouter>
