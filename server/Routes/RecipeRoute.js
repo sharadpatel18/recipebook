@@ -1,3 +1,14 @@
 const router = require('express').Router();
+const {Authentication} = require('../Middlewares/Auth')
+const {AddRecipe , GetAllRecipes} = require('../Controllers/RecipeControllers')
 
-router.post("/addrecipe")
+
+// add recipes
+
+router.post("/addrecipe" , Authentication , AddRecipe)
+
+// get all recipes
+
+router.get("/getallrecipe" , Authentication  , GetAllRecipes)
+
+module.exports = router

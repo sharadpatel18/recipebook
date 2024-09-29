@@ -39,7 +39,6 @@ const Login = async (req, res) => {
             name: user.name,
             id: user._id
         },
-
             process.env.SECRET_KEY, { expiresIn: "24h" }
         )
         res.status(201)

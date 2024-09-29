@@ -1,8 +1,9 @@
 const jwt = require('jsonwebtoken')
 
 const Authentication = (req,res,next) => {
-    const auth = req.header['authentication'];
-    if (auth) {
+    const auth = req.headers['authentication'];
+    console.log(auth);
+    if (!auth) {
         res.status(403)
             .json({message:"unauthorized , jwt token is require"});
     } 
@@ -17,4 +18,4 @@ const Authentication = (req,res,next) => {
     }
 }
 
-module.exports = Authentication
+module.exports = {Authentication}
