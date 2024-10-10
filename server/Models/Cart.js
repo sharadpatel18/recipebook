@@ -1,18 +1,21 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const recipeSchema = new mongoose.Schema({
-    recipename:{
+const ATCschema = new mongoose.Schema({
+    name:{
         type:String,
     },
-    recipeimage:{
-        type:String,
+    image:{
+        type:String
     },
-    recipedescription:{
-        type:String,
+    description:{
+        type:String
     },
-    ingredientsList:[
+    person:{
+        type:Number
+    },
+    Ingredients:[
         {
-            ingredientName:{
+            ingredientname:{
                 type:String
             },
             ingredientquentity:{
@@ -24,13 +27,15 @@ const recipeSchema = new mongoose.Schema({
             ingredientprice:{
                 type:Number
             }
-        }
+        }    
     ],
-    recipekeyword:[String],
+    TotalPrice:{
+        type:Number
+    },
     userId:{
         type:mongoose.Schema.Types.ObjectId,
     }
 })
 
-const Recipe = mongoose.model("Recipe" , recipeSchema)
-module.exports = Recipe;
+const CartData = mongoose.model("CartData" , ATCschema);
+module.exports = CartData;

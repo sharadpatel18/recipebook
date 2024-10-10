@@ -61,7 +61,7 @@ const Addrecipe = () => {
     }
 
     const handleSubmit = () => {
-        const data = { recipename: recipename, recipeimage: recipeimage, recipedescription: recipedescription, ingredientsList: JSON.stringify(ingredientsList), recipekeyword: JSON.stringify(recipekeyword), userId: loginData.id }
+        const data = { recipename: recipename, recipeimage: recipeimage, recipedescription: recipedescription, ingredientsList: ingredientsList, recipekeyword:recipekeyword, userId: loginData.id }
         AddRecipe(data , loginData.Token)
     }
 

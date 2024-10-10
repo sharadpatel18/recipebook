@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 
 const Authentication = (req,res,next) => {
     const auth = req.headers['authentication'];
-    console.log(auth);
     if (!auth) {
         res.status(403)
             .json({message:"unauthorized , jwt token is require"});

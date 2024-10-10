@@ -20,7 +20,7 @@ const AdminUser = () => {
         }
         saveData();
     },[])
-    console.log(Recipes);
+
   return (
     <div className='admin-main'>
         <div className='admin-navbar'>

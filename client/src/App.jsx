@@ -6,6 +6,9 @@ import Signup from './components/Auth/Signup';
 import Login from './components/Auth/Login';
 import AdminUser from './components/admin/admin-User';
 import Addrecipe from './components/admin/Addrecipe';
+import Addtocart from './components/customer/Addtocart';
+import Cart from './components/customer/Cart';
+
 
 function App() {
 
@@ -19,6 +22,8 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/admin' element={<AdminUser />} />
             <Route path='/admin/addrecipe' element={<Addrecipe />} />
+            <Route path='/addtocart/:id' element={<Addtocart />} />
+            <Route path='/cart' element={<Cart />} />
           </Route>
         </Routes>
       </BrowserRouter>
