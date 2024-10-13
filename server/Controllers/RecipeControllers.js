@@ -1,5 +1,6 @@
 const RecipeModel = require('../Models/RecipeModel')
 const CartData = require('../Models/Cart')
+const History = require('../Models/History')
 
 const AddRecipe = async (req, res) => {
     try {
@@ -64,4 +65,38 @@ const GetCartDataById = async (req,res) => {
     res.send(data)
 }
 
-module.exports = {AddRecipe , GetAllRecipes , GetRecipeById , AddCart , GetCartDataById}
+const AddHistory = async (req,res) => {
+    try {
+        const addHistory = new History(req.body) 
+        addHistory.save()
+        res.status(201)
+            .json({
+                message:"successfully saved!!!!",
+                success:true
+            })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const DeleteCart = async (req,res) => {
+    try {
+        const {id} = req.params;
+        const deletecart = await CartData.findByIdAndDelete(id)
+        res.status(201)
+        .json({
+            message:"successfully deleted!!!!",
+            success:true
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const GetHistoryById = async (req,res) => {
+    const {id} = req.params;
+    const data = await History.find({userId:id});
+    res.send(data)
+}
+
+module.exports = {AddRecipe , GetAllRecipes , GetRecipeById , AddCart , GetCartDataById , AddHistory , DeleteCart , GetHistoryById}

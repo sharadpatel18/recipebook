@@ -30,7 +30,7 @@ const AdminUser = () => {
             </div>
             <div>
                 <button onClick={()=>Navigate("/admin/addrecipe")}>Add recipe</button>
-                <button>Recipe-List</button>
+                <button onClick={()=>Navigate('/admin/myrecipe')}>Recipe-List</button>
             </div>
         </div>
         <div className='recipe-data'>

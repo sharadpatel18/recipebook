@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { GetAllRecipes, GetRecipeById } from "../../api/RecipeApi";
+import { GetAllRecipes } from "../../api/RecipeApi";
 import { useNavigate } from "react-router-dom";
+import RecipeComponent from "../minicomponents/Recipes";
 
 const Home = () => {
   const getloginData = (e) => {
@@ -12,20 +13,23 @@ const Home = () => {
     }
   };
 
+  let tested = [];
+  const [filterData,setFilterData] = useState([])
   const [loginData, setLoginData] = useState(getloginData());
   const [Recipes, setRecipes] = useState([]);
+  const [searchValue , setSearchValue] = useState("")
   const recipedata = [];
   const Navigate = useNavigate();
-
+  
   useEffect(() => {
     const saveData = async () => {
       const data = await GetAllRecipes(loginData.Token);
       setRecipes(data);
+      setFilterData(data)
     };
     saveData();
   }, []);
   
-  console.log(Recipes);
   Recipes.forEach((item) => {
     item.recipekeyword.forEach((keys) => {
       if (!recipedata.includes(keys)) {
@@ -38,7 +42,32 @@ const Home = () => {
     Navigate(`/addtocart/${id}`);
   };
 
-  console.log(recipedata);
+  const handleSearch = (value) => {
+    setSearchValue(value);
+    Recipes.forEach((item)=>{
+      item.recipekeyword.forEach ((keys)=>{
+        if (keys.includes(value)) {
+          if (!tested.includes(item)) {
+            tested.push(item);
+          }else{
+            tested = [];
+            tested.push(item);
+          }
+        }
+      })
+
+      if (item.recipename.includes(value)) {
+        tested.push(item);
+      }
+
+    })
+    if (value === "") {
+      setFilterData(Recipes);
+    }else{
+      setFilterData(tested);
+    }
+  }
+
   return (
     <div className="home-main">
       <div className="home-details">
@@ -49,7 +78,7 @@ const Home = () => {
       </div>
       <div className="home-searchbar">
         <div>
-          <input type="search" name="search" placeholder="search recipe" />
+          <input type="search" name="search" placeholder="search recipe" value={searchValue} onChange={(e)=>handleSearch(e.target.value)}/>
           <select name="recipe">
             {recipedata.map((item) => (
               <option value={item}>{item}</option>
@@ -61,21 +90,12 @@ const Home = () => {
         </div>
       </div>
       <div className="home-recipe">
-        {Recipes.map((item) => (
-          <div key={item._id} className="data">
-            <img src={item.recipeimage} alt="err" />
-            <h2>{item.recipename}</h2>
-            <label htmlFor="dis">{item.recipedescription}</label>
-            <label htmlFor="user">user</label>
-            <button
-              className="btn btn-primary"
-              onClick={() => AddtoCart(item._id)}
-            >
-              add to cart
-            </button>
-            <button className="btn btn-primary my-2">buy now</button>
-          </div>
-        ))}
+        {filterData.map((item) => {
+          return(
+            <RecipeComponent id={item._id} name={item.recipename} image={item.recipeimage} description={item.recipedescription} AddtoCart={AddtoCart}/>
+          )
+          }
+        )}
       </div>
     </div>
   );

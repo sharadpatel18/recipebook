@@ -5,15 +5,11 @@ const Ingredients = ({ handleRemove , index , onChangeValue , setIngObj}) => {
     const [ingredientquentity , setingredientquentity] = useState("")
     const [ingredientunit , setingredientunit] = useState("")
     const [ingredientprice , setingredientprice] = useState("")
- 
-    // if (ingredientName || ingredientprice || ingredientquentity || ingredientunit) {
         useEffect(()=>{
             const newData = {ingredientName,ingredientquentity,ingredientunit,ingredientprice}
             setIngObj(newData)
             onChangeValue(index,newData)
         },[ingredientunit , ingredientName , ingredientquentity , ingredientprice])
-    
-    // }
     return (
         <div className='ingredient-main'>
             <div>

@@ -31,7 +31,10 @@ const Navbar = () => {
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                               {(Object.keys(loginData).length === 0) ?  <Link className="nav-link" to="/signup">Signup</Link> :  <button onClick={handleLogout}>log out</button>}
+                                <Link className="nav-link active" aria-current="page" to="/history">History</Link>
+                            </li>
+                            <li className="nav-item">
+                               {(Object.keys(loginData).length === 0) ?  <Link className="nav-link" to="/signup">Signup</Link> :  <button className='nav-link' onClick={handleLogout}>log out</button>}
                             </li>
                         </ul>
                     </div>

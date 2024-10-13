@@ -8,7 +8,8 @@ import AdminUser from './components/admin/admin-User';
 import Addrecipe from './components/admin/Addrecipe';
 import Addtocart from './components/customer/Addtocart';
 import Cart from './components/customer/Cart';
-
+import History from './components/customer/History';
+import MyRecipe from './components/admin/MyRecipe';
 
 function App() {
 
@@ -22,8 +23,10 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/admin' element={<AdminUser />} />
             <Route path='/admin/addrecipe' element={<Addrecipe />} />
+            <Route path='/admin/myrecipe' element={<MyRecipe />} />
             <Route path='/addtocart/:id' element={<Addtocart />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/history' element={<History />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -25,15 +25,19 @@ const GetAllRecipes = async (jwtToken) => {
                 "authentication": `${jwtToken}`
             }
         })
-
-        return responce.data;
+        if (responce) {
+            return responce.data;
+        }else{
+            return []
+        }
     } catch (error) {
         console.log(error);
+        return []
     }
 }
 
 
-const GetRecipeById = async (id , Token) => {
+const GetRecipeById = async (Token , id) => {
     try {
         const responce = await instance.get(`/getrecipebyid/${id}`, {
             headers: {
@@ -67,10 +71,49 @@ const GetCartById = async (Token , id) => {
                 "authentication": `${Token}`
             }
         })
+        return responce.data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const AddHistory = async (Token , data) => {
+    try {
+        const responce = await instance.post(`/addhistory` , data , {
+            headers: {
+                "authentication": `${Token}`
+            }
+        })
         return responce.data;
     } catch (error) {
         console.log(error);
     }
 }
 
-export { AddRecipe, GetAllRecipes, GetRecipeById , AddCart , GetCartById}
+const RemoveCart = async (Token , id) => {
+    try {
+        const responce = await instance.delete(`/deletecart/${id}` , {
+            headers: {
+                "authentication": `${Token}`
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const GetHistoryById = async (Token , id) => {
+    try {
+        const responce = await instance.get(`/gethistorybyid/${id}` , {
+            headers: {
+                "authentication": `${Token}`
+            }
+        })
+        return responce.data;
+    } catch (error) {
+        console.log(error);
+        return []
+    }
+}
+
+export { AddRecipe, GetAllRecipes, GetRecipeById , AddCart , GetCartById , AddHistory , RemoveCart , GetHistoryById}

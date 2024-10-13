@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import Ingredients from '../minicomponents/Ingredients'
 import { AddRecipe } from '../../api/RecipeApi'
 const Addrecipe = () => {
@@ -19,6 +19,7 @@ const Addrecipe = () => {
     const [ingredientsList, setingredientsList] = useState([]);
     const [keywords, setkeywords] = useState(['fastfood', 'snacks', 'veg', 'non-veg', 'jain', 'healthy']);
     const [IngObj, setIngObj] = useState({});
+    const [recipekeywordinstring , setRecipeKeywordsinstring] = useState("");
     const handleAddComponent = () => {
         if (component.length === 0 || IngObj.ingredientName !== "" && IngObj.quentity !== "" && IngObj.ingredientunits !== "" && IngObj.ingredientprice !== "") {
             setComponents((prev) => [
@@ -47,17 +48,29 @@ const Addrecipe = () => {
         })
     }
 
-    //
     const handleRemove = () => {
         setComponents((prev) => [
             prev.slice(0, -1)
         ])
     }
-    //suggest keyword add in recipe keyword state
+
     const handleAddKeyWord = (item) => {
-        if (!recipekeyword.includes(item)) {
-            setRecipeKeyword((prev) => [...prev, item])
-        }
+        setRecipeKeywordsinstring(recipekeywordinstring+item+",")
+    }
+    
+    useEffect(()=>{
+        let data = recipekeywordinstring.split(",") 
+        data = data.filter((item)=>{
+            return item !== ""
+        })
+        setRecipeKeyword(data)
+    },[recipekeywordinstring])
+
+    const handleChange = (value) => {
+        let data = recipekeywordinstring;
+        data = "";
+        data = data + value;
+        setRecipeKeywordsinstring(data)
     }
 
     const handleSubmit = () => {
@@ -92,7 +105,7 @@ const Addrecipe = () => {
                 </div>
                 <div className='add-div-4'>
                     <label htmlFor="123">keywords</label>
-                    <textarea name="text" placeholder='enter keyword' value={recipekeyword}></textarea>
+                    <textarea name="text" placeholder='enter keyword' value={recipekeywordinstring} onChange={(e)=>handleChange(e.target.value)}></textarea>
                 </div>
                 <div className='add-div-5'>
                     <label htmlFor="123">Suggested Keywords: </label>
