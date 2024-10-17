@@ -18,13 +18,10 @@ const MyRecipe = () => {
     const saveData = async () => {
       const data = await GetRecipeById(loginData.Token, loginData.id);
       setRecipes(data);
-      console.log(data);
-      
     };
     saveData();
   }, []);
-  console.log(Recipes);
-  
+
   return (
     <>
       {Recipes.map((item) => {

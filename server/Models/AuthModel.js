@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb://127.0.0.1:27017/recipebook")
+mongoose.connect("mongodb+srv://patelsharad595:CeAvsU3gsIS9Rr5P@recipedata.lqvij.mongodb.net/")
 .then(()=>{
     console.log("database is connected successfully");
 })

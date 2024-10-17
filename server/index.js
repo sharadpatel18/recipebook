@@ -4,7 +4,6 @@ const cors = require("cors");
 const bodyPaser = require('body-parser');
 const AuthRoutes = require('./Routes/AuthRoute')
 const RecipeRoutes = require('./Routes/RecipeRoute')
-const {Authentication} = require('./Middlewares/Auth')
 require("dotenv").config()
 
 app.use(cors())

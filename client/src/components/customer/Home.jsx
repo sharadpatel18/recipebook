@@ -87,7 +87,7 @@ const Home = () => {
           <input type="search" name="search" placeholder="search recipe" value={searchValue} onChange={(e)=>handleSearch(e.target.value)}/>
           <select name="recipe" value={selectValue} onChange={(e)=>setSelectValue(e.target.value)}>
             {recipedata.map((item) => (
-              <option value={item}>{item}</option>
+              <option key={item} value={item}>{item}</option>
             ))}
           </select>
         </div>
@@ -98,7 +98,7 @@ const Home = () => {
       <div className="home-recipe">
         {filterData.map((item) => {
           return(
-            <RecipeComponent id={item._id} name={item.recipename} image={item.recipeimage} description={item.recipedescription} AddtoCart={AddtoCart}/>
+            <RecipeComponent key={item._id} id={item._id} name={item.recipename} image={item.recipeimage} description={item.recipedescription} AddtoCart={AddtoCart}/>
           )
           }
         )}

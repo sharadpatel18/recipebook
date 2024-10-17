@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetSelectedRecipeById , AddCart } from "../../api/RecipeApi";
+import { GetSelectedRecipeById , AddCart  , AddHistory} from "../../api/RecipeApi";
 import { useParams } from "react-router-dom";
 import Atc from "../minicomponents/Atc";
 
@@ -69,6 +69,20 @@ const Addtocart = () => {
     };
     AddCart(obj, loginData.Token);
   };
+
+  const handleBuyNow = () => {
+    const obj = {
+      name: recipe.recipename,
+      image: recipe.recipeimage,
+      description: recipe.recipedescription,
+      person: person,
+      Ingredients: updatedIngredients,
+      TotalPrice:TotalPrice,
+      userId: loginData.id,
+    };
+    AddHistory(loginData.Token , obj);
+  }
+
   return (
     <>
       <div className="atc-main">
@@ -116,7 +130,7 @@ const Addtocart = () => {
             <label htmlFor="">{TotalPrice}</label>
           </div>
           <div style={{ display: "flex" }}>
-            <button className="btn btn-primary mx-2">Buy now</button>
+            <button className="btn btn-primary mx-2" onClick={()=>handleBuyNow()}>Buy now</button>
             <button className="btn btn-primary" onClick={handleSubmit}>
               Add To Cart
             </button>

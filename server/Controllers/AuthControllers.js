@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt')
 const User = require('../Models/AuthModel')
 const jwt = require('jsonwebtoken')
+const nodemailer = require('nodemailer')
+require('dotenv').config();
 
 const Signup = async (req, res) => {
     try {
@@ -51,4 +53,44 @@ const Login = async (req, res) => {
     }
 }
 
-module.exports = { Signup, Login }
+const ForgetPassword = async (req, res) => {
+    const { email } = req.body;
+    const findUser = await User.findOne({email})
+    console.log(findUser._id);
+    if (!findUser) {
+        return res.status(401)
+                    .json({message:"user is not existed" , success:false})
+    }
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASS
+        }
+    });
+    const info = await transporter.sendMail({
+        from: '"Maddison Foo Koch 👻" <patelsharad595@gmail.email>', // sender address
+        to: email, // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: `http://localhost:5173/resetpassword/${findUser._id}`// plain text body
+      });
+}
+
+const Resetpassword = async (req,res) => {
+    const {id} = req.params;
+    const {password} = req.body;
+    console.log(id , password);
+    try {
+        const hassPass = await bcrypt.hash(password , 10)
+        const updatePass = await User.findByIdAndUpdate(id , {password:hassPass})
+        .then(()=>{
+            console.log("updated");
+        })
+    } catch (error) {
+        console.log(error,"password is not updated");
+    }
+} 
+
+
+module.exports = { Signup, Login , ForgetPassword , Resetpassword}

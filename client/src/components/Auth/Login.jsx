@@ -46,6 +46,7 @@ const Login = () => {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                     <button className="btn btn-primary mx-1" onClick={()=>Navigate('/signup')}>create account</button>
+                    <button className="btn btn-danger" onClick={()=>Navigate('/forgotpassword')}>Forgot Password</button>
                 </form>
             </div>
         </div>
