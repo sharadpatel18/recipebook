@@ -18,6 +18,8 @@ const MyRecipe = () => {
     const saveData = async () => {
       const data = await GetRecipeById(loginData.Token, loginData.id);
       setRecipes(data);
+      console.log(data);
+      
     };
     saveData();
   }, []);
@@ -25,7 +27,7 @@ const MyRecipe = () => {
   
   return (
     <>
-      {/* {Recipes.map((item) => {
+      {Recipes.map((item) => {
         return (
           <div key={item._id} className="data">
             <img src={item.recipeimage} alt="err" />
@@ -33,7 +35,7 @@ const MyRecipe = () => {
             <label htmlFor="dis">{item.recipedescription}</label>
           </div>
         );
-      })} */}
+      })}
     </>
   );
 };

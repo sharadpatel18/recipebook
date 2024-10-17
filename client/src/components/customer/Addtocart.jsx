@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetRecipeById, AddCart } from "../../api/RecipeApi";
+import { GetSelectedRecipeById , AddCart } from "../../api/RecipeApi";
 import { useParams } from "react-router-dom";
 import Atc from "../minicomponents/Atc";
 
@@ -23,7 +23,7 @@ const Addtocart = () => {
 
   useEffect(() => {
     const saveData = async () => {
-      const data = await GetRecipeById(id, loginData.Token);
+      const data = await GetSelectedRecipeById(loginData.Token , id);
       if (data !== undefined) {
         setRecipe(data);
         setIngredientList(data.ingredientsList);

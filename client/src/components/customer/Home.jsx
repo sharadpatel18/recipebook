@@ -17,6 +17,7 @@ const Home = () => {
   const [filterData,setFilterData] = useState([])
   const [loginData, setLoginData] = useState(getloginData());
   const [Recipes, setRecipes] = useState([]);
+  const [selectValue , setSelectValue] = useState('')
   const [searchValue , setSearchValue] = useState("")
   const recipedata = [];
   const Navigate = useNavigate();
@@ -68,6 +69,11 @@ const Home = () => {
     }
   }
 
+  useEffect(()=>{
+    setSearchValue(selectValue);
+    handleSearch(selectValue)
+  },[selectValue])
+
   return (
     <div className="home-main">
       <div className="home-details">
@@ -79,7 +85,7 @@ const Home = () => {
       <div className="home-searchbar">
         <div>
           <input type="search" name="search" placeholder="search recipe" value={searchValue} onChange={(e)=>handleSearch(e.target.value)}/>
-          <select name="recipe">
+          <select name="recipe" value={selectValue} onChange={(e)=>setSelectValue(e.target.value)}>
             {recipedata.map((item) => (
               <option value={item}>{item}</option>
             ))}

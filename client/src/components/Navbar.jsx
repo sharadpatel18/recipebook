@@ -33,6 +33,9 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to="/history">History</Link>
                             </li>
+                            <li>
+                                {(loginData.isAdmin) ? <Link to="/admin" className="nav-link active">Admin</Link> : ""}
+                            </li>
                             <li className="nav-item">
                                {(Object.keys(loginData).length === 0) ?  <Link className="nav-link" to="/signup">Signup</Link> :  <button className='nav-link' onClick={handleLogout}>log out</button>}
                             </li>

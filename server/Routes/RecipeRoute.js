@@ -9,6 +9,7 @@ const {
   AddHistory,
   DeleteCart,
   GetHistoryById,
+  GetSelectedRecipeById
 } = require("../Controllers/RecipeControllers");
 
 // add recipes
@@ -41,5 +42,9 @@ router.delete("/deletecart/:id", Authentication, DeleteCart);
 //get history by id
 
 router.get('/gethistorybyid/:id' , Authentication  , GetHistoryById);
+
+//get selected recipe by id
+
+router.get('/selectedrecipe/:id' , Authentication , GetSelectedRecipeById)
 
 module.exports = router;

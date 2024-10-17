@@ -28,7 +28,9 @@ const GetAllRecipes = async (req,res) => {
 const GetRecipeById = async (req,res) => {
     try {
         const {id} = req.params;
-        const getRecipe = await RecipeModel.findById(id)
+        console.log(id);
+        
+        const getRecipe = await RecipeModel.find({userId:id})
         res.send(getRecipe)
     } catch (error) {
         console.log(error);   
@@ -79,6 +81,17 @@ const AddHistory = async (req,res) => {
     }
 }
 
+const GetSelectedRecipeById = async (req,res) => {
+    try {
+        const {id} = req.params;
+        const getRecipe = await RecipeModel.findById(id)
+        res.send(getRecipe)
+    } catch (error) {
+        console.log(error);   
+    }
+}
+
+
 const DeleteCart = async (req,res) => {
     try {
         const {id} = req.params;
@@ -99,4 +112,4 @@ const GetHistoryById = async (req,res) => {
     res.send(data)
 }
 
-module.exports = {AddRecipe , GetAllRecipes , GetRecipeById , AddCart , GetCartDataById , AddHistory , DeleteCart , GetHistoryById}
+module.exports = {AddRecipe , GetAllRecipes , GetRecipeById , AddCart , GetCartDataById , AddHistory , GetSelectedRecipeById , DeleteCart , GetHistoryById}

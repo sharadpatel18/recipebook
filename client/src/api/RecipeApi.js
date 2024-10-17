@@ -116,4 +116,18 @@ const GetHistoryById = async (Token , id) => {
     }
 }
 
-export { AddRecipe, GetAllRecipes, GetRecipeById , AddCart , GetCartById , AddHistory , RemoveCart , GetHistoryById}
+const GetSelectedRecipeById = async (Token,id) => {
+    try {
+        const responce = await instance.get(`/selectedrecipe/${id}` , {
+            headers: {
+                "authentication": `${Token}`
+            }
+        })
+        return responce.data;
+    } catch (error) {
+        console.log(error);
+        return []
+    }
+}
+
+export { AddRecipe, GetAllRecipes, GetRecipeById , AddCart , GetCartById , AddHistory , RemoveCart , GetHistoryById ,GetSelectedRecipeById}
